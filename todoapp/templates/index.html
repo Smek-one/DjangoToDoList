@@ -1,10 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}
+Mes tâches |
+{% endblock title %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        <h1 class="text-center">My ToDo App</h1>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                {{task_form.title}}
+                <button type="submit" class="btn btn-primary btn-lg">AJOUTER</button>
+            </div>
+        </form>
+        <h4 class="bg-secondary text-light py-2 rounded text-center">Ma liste de Tâches </h4>
+
+        <ul class="list-group">
+            {% for task in tasks %}
+            <li class="list-group-item list-group-item-action">
+                {% if task.completed == True %}
+                <strike>{{task.title}} </strike>
+                {% else %}
+                {{task.title}}
+                {% endif %}
+              <div class="float-end">
+                    <a href="{% url 'update' task.id %}" class="btn btn-sm btn-warning">Modifier</a>
+
+                    <a href="{% url 'delete' task.id %}" class="btn btn-sm btn-danger">Supprimer</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock content %}
