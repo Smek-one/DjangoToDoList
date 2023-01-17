@@ -1,10 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+<h2 class="title text-center">Se connecter </h2>
+    <form method="post">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+            <p class="alert alert-danger">{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+        {% csrf_token %}
+        <table class="login-form">
+        {% for field in form %}
+          <tr>
+            <td>{{ field.label_tag }}</td>
+            <td>{{ field }}</td>
+          </tr>
+            {% endfor %}
+         </table>
+        <button class="btn btn-info" type="submit">Se connecter</button>
+    </form>
+
+
+
+    <small class="not-user">
+        Pas encore inscrit.e?
+        <a class="reset-link" href="{% url 'register' %}">
+            S'inscrire
+        </a>
+    <br>
+        Mot de passe oublié ?
+        <a class="reset-link" href="{% url 'password_reset' %}">
+            Renouveler mon mot de passe
+        </a>
+    </small>
+
+    </div>
+{% endblock %}

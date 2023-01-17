@@ -1,8 +1,45 @@
 body{
-    background-color: #547086;
+    background-color: #03C988;
+}
+
+.navbar{
+    background: #00337C;
+}
+
+.navbar-brand{
+    margin: auto 2vw;
+}
+
+.title{
+    margin: 2vh;
+}
+
+.card{
+    background: #13005A;
+    color: #fff;
 }
 
 .container{
     margin-top: 100px;
     max-width: 700px;
+}
+
+.btn-info{
+    margin: 2vh auto;
+    display: block;
+    background: #03C988;
+}
+
+.reset-link{
+    color:#03C988;
+}
+
+table{
+    margin: auto;
+}
+
+.not-user{
+    text-align: center;
+    display: block;
+    margin-bottom: 2vh
 }

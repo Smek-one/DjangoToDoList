@@ -1,8 +1,10 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+
 
 urlpatterns = [
     path('', views.index, name="index"),
     path('update/<int:pk>/',views.update, name="update"),
     path('delete/<int:pk>/',views.delete, name="delete"),
+    path('accounts/', include('usersapp.urls')),
 ]
